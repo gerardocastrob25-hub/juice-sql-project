@@ -7,9 +7,10 @@ CREATE TABLE Products (
 
 CREATE TABLE Sales (
     sale_id INTEGER PRIMARY KEY,
-    product_id INTEGER,
+    product_name TEXT,
     quantity_sold INTEGER,
-    sale_date DATE
+    sale_date DATE,
+    selling_price REAL
 );
 
 CREATE TABLE Ingredients (
@@ -25,21 +26,21 @@ INSERT INTO Products VALUES
 (3, 'Ginger Shot', 2, 3.00);
 
 INSERT INTO Sales VALUES
-(1, 1, 6, '2026-05-03'),
-(2, 2, 4, '2026-05-03'),
-(3, 3, 8, '2026-05-03'),
+(1, 'Apple Carrot Ginger', 6, '2026-05-03', 6.00),
+(2, 'Sweet Green', 4, '2026-05-03', 6.00),
+(3, 'Ginger Shot', 8, '2026-05-03', 3.00),
 
-(4, 1, 7, '2026-05-06'),
-(5, 2, 5, '2026-05-06'),
-(6, 3, 9, '2026-05-06'),
+(4, 'Apple Carrot Ginger', 7, '2026-05-06', 6.00),
+(5, 'Sweet Green', 5, '2026-05-06', 6.00),
+(6, 'Ginger Shot', 9, '2026-05-06', 3.00),
 
-(7, 1, 8, '2026-05-10'),
-(8, 2, 6, '2026-05-10'),
-(9, 3, 10, '2026-05-10'),
+(7, 'Apple Carrot Ginger', 8, '2026-05-10', 6.00),
+(8, 'Sweet Green', 6, '2026-05-10', 6.00),
+(9, 'Ginger Shot', 10, '2026-05-10', 3.00),
 
-(10, 1, 6, '2026-05-14'),
-(11, 2, 4, '2026-05-14'),
-(12, 3, 5, '2026-05-14');
+(10, 'Apple Carrot Ginger', 6, '2026-05-14', 6.00),
+(11, 'Sweet Green', 4, '2026-05-14', 6.00),
+(12, 'Ginger Shot', 5, '2026-05-14', 3.00);
 
 INSERT INTO Ingredients VALUES
 (1, 'Apple', 'each', 0.75),
@@ -50,53 +51,55 @@ INSERT INTO Ingredients VALUES
 (6, 'Spinach', 'cup', 0.40),
 (7, 'Orange', 'each', 0.60);
 
+-- View all products
+SELECT *
+FROM Products;
+
+-- View all sales
+SELECT *
+FROM Sales;
+
+-- View all ingredients and produce costs
+SELECT *
+FROM Ingredients;
+
 -- Total bottles sold
 SELECT
     SUM(quantity_sold) AS total_bottles_sold
 FROM Sales;
 
--- View products
-SELECT *
-FROM Products;
-
--- View sales
-SELECT *
-FROM Sales;
-
--- View ingredients / produce costs
-SELECT *
-FROM Ingredients;
-
 -- Total revenue
 SELECT
-    SUM(s.quantity_sold * p.selling_price) AS total_revenue
-FROM Sales s
-JOIN Products p
-    ON s.product_id = p.product_id;
+    SUM(quantity_sold * selling_price) AS total_revenue
+FROM Sales;
 
 -- Revenue by product
 SELECT
-    p.product_name,
-    SUM(s.quantity_sold * p.selling_price) AS revenue
-FROM Sales s
-JOIN Products p
-    ON s.product_id = p.product_id
-GROUP BY p.product_name;
+    product_name,
+    SUM(quantity_sold * selling_price) AS revenue
+FROM Sales
+GROUP BY product_name;
 
 -- Units sold by product
 SELECT
-    p.product_name,
-    SUM(s.quantity_sold) AS units_sold
-FROM Sales s
-JOIN Products p
-    ON s.product_id = p.product_id
-GROUP BY p.product_name
+    product_name,
+    SUM(quantity_sold) AS units_sold
+FROM Sales
+GROUP BY product_name
 ORDER BY units_sold DESC;
 
 -- Sales by date
 SELECT
     sale_date,
     SUM(quantity_sold) AS total_units_sold
+FROM Sales
+GROUP BY sale_date
+ORDER BY sale_date;
+
+-- Revenue by date
+SELECT
+    sale_date,
+    SUM(quantity_sold * selling_price) AS revenue
 FROM Sales
 GROUP BY sale_date
 ORDER BY sale_date;
@@ -115,11 +118,18 @@ FROM
 
 -- Best selling product
 SELECT
-    p.product_name,
-    SUM(s.quantity_sold) AS units_sold
-FROM Sales s
-JOIN Products p
-    ON s.product_id = p.product_id
-GROUP BY p.product_name
+    product_name,
+    SUM(quantity_sold) AS units_sold
+FROM Sales
+GROUP BY product_name
 ORDER BY units_sold DESC
+LIMIT 1;
+
+-- Most expensive ingredient
+SELECT
+    ingredient_name,
+    unit_type,
+    cost_per_unit
+FROM Ingredients
+ORDER BY cost_per_unit DESC
 LIMIT 1;
