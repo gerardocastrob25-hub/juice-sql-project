@@ -36,4 +36,4 @@ The database stores:
 ## Project Files
 
 - juice_project.sql
-- screenshots
+- pictures
