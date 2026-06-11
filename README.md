@@ -1,68 +1,82 @@
-# Juice Sales Progress Tracker SQL Project
+# Juice Sales Progress Tracker
 
 ## Overview
 
-This project is a simple SQL database designed to track the progress of a small juice business.
+This database is used to track juice sales, ingredient costs, and product performance.
 
-The database stores product information, sales transactions, and ingredient costs. It can be used to monitor sales performance, revenue generation, and product demand over time.
+The goal is to monitor sales trends, revenue, beverage demand, and ingredient pricing over time.
 
-## Database Structure
+## Data Tracked
 
 ### Products
-Stores information about each juice product.
+
+Stores information about each beverage offered.
 
 Fields:
-- product_id
-- product_name
-- size_oz
-- selling_price
+
+* Product ID
+* Product Name
+* Bottle Size (oz)
+* Selling Price
 
 ### Sales
-Stores daily sales transactions.
+
+Stores individual sales transactions.
 
 Fields:
-- sale_id
-- product_id
-- quantity_sold
-- sale_date
+
+* Sale ID
+* Product Name
+* Quantity Sold
+* Sale Date
+* Selling Price
 
 ### Ingredients
+
 Stores produce and ingredient cost information.
 
 Fields:
-- ingredient_id
-- ingredient_name
-- unit_type
-- cost_per_unit
 
-## SQL Skills Demonstrated
+* Ingredient ID
+* Ingredient Name
+* Unit Type
+* Cost Per Unit
 
-- CREATE TABLE
-- INSERT INTO
-- SELECT
-- WHERE
-- GROUP BY
-- ORDER BY
-- SUM
-- AVG
-- Aggregate Reporting
+## Beverage Options
 
-## Business Questions Answered
+* Apple Carrot Ginger
+* Sweet Green
+* Ginger Shot
+* Citrus Blast
+* Tropical Green
+* Watermelon Cooler
 
-- How many bottles have been sold?
-- What is the total revenue?
-- Which product generates the most revenue?
-- Which product sells the most units?
-- What are sales by date?
-- What is the average daily sales volume?
-- What ingredients and produce are being tracked?
-- What are the current ingredient costs?
+## Current Summary
 
-## Files
+* Total Transactions: 78
+* Total Bottles Sold: 141
+* Total Revenue: $768.50
+* Sales Tracking Period: May 3, 2026 through June 5, 2026
+* Beverage Options Tracked: 6
+* Ingredients Tracked: 9
 
-- juice_project.sql - Database creation, data loading, and analysis queries
-- pictures - Few options
+## Reports Available
 
-## Project Goal
+The database can be used to review:
 
-The goal of this project is to demonstrate foundational SQL skills by building a simple business tracking system capable of monitoring product sales, revenue, and ingredient costs.
+* Total sales transactions
+* Total bottles sold
+* Total revenue
+* Revenue by beverage
+* Units sold by beverage
+* Sales by date
+* Revenue by date
+* Average daily sales
+* Ingredient cost information
+* Most frequently purchased beverages
+
+## Purpose
+
+This database helps maintain sales records, monitor business performance, identify popular beverages, and track ingredient costs.
+
+The information can be used to support future inventory planning, purchasing decisions, pricing reviews, and sales analysis.
