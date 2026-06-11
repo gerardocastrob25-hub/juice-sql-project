@@ -1,6 +1,6 @@
 # juice-sql-project
 
-Mialiana's juicery
+Mialiana's juicer
 
 ## Overview
 
