@@ -1,41 +1,68 @@
 # Juice Sales Progress Tracker SQL Project
 
-## Project Overview
+## Overview
 
-This project is a simple SQL database used to track the progress of a small juice business.
+This project is a simple SQL database designed to track the progress of a small juice business.
 
-The goal is to monitor sales over time, compare products, track total bottles sold, and measure revenue growth.
+The database stores product information, sales transactions, and ingredient costs. It can be used to monitor sales performance, revenue generation, and product demand over time.
 
-## What This Project Tracks
+## Database Structure
 
-- Products sold
-- Quantity sold
-- Sales by date
-- Total bottles sold
-- Revenue by product
-- Daily sales progress
-- Best-selling product
+### Products
+Stores information about each juice product.
+
+Fields:
+- product_id
+- product_name
+- size_oz
+- selling_price
+
+### Sales
+Stores daily sales transactions.
+
+Fields:
+- sale_id
+- product_id
+- quantity_sold
+- sale_date
+
+### Ingredients
+Stores produce and ingredient cost information.
+
+Fields:
+- ingredient_id
+- ingredient_name
+- unit_type
+- cost_per_unit
 
 ## SQL Skills Demonstrated
 
 - CREATE TABLE
 - INSERT INTO
 - SELECT
-- JOIN
+- WHERE
 - GROUP BY
+- ORDER BY
 - SUM
 - AVG
-- ORDER BY
-- LIMIT
+- Aggregate Reporting
 
 ## Business Questions Answered
 
-- How many bottles have been sold so far?
-- Which juice is selling the most?
-- How much revenue has been made?
-- Which days had the highest sales?
+- How many bottles have been sold?
+- What is the total revenue?
+- Which product generates the most revenue?
+- Which product sells the most units?
+- What are sales by date?
 - What is the average daily sales volume?
+- What ingredients and produce are being tracked?
+- What are the current ingredient costs?
+
+## Files
+
+- juice_project.sql - Database creation, data loading, and analysis queries
+- pictures - Few options
 
 ## Project Goal
 
-This project shows how SQL can be used to track business progress and turn sales data into useful information.
+The goal of this project is to demonstrate foundational SQL skills by building a simple business tracking system capable of monitoring product sales, revenue, and ingredient costs.
